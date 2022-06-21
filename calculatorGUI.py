@@ -1,12 +1,17 @@
 
 import tkinter
 from widgets.KButton import KButton
+from calculatorService import CalculatorService
 
 class CalculatorGUI():
 
-    def __init__(self):
+    def __init__(self, service):
+        self.service = service
+
         self.normalButtonColor = "#e8e8e8"
         self.normalButtonAccentColor = "#d6d6d6"
+        self.utilityButtonColor = "#cfe3dd"
+        self.utilityButtonAccentColor = "#b9c9c5"
         self.operationButtonColor = "#00d498"
         self.operationButtonAccentColor = "#00c48d"
         self.equalButtonColor = "#02ad7d"
@@ -73,19 +78,19 @@ class CalculatorGUI():
             text="AC",
             height=self.buttonHeight,
             width=self.buttonWidth,
-            background=self.normalButtonColor,
-            onHoverBackground=self.normalButtonAccentColor,
+            background=self.utilityButtonColor,
+            onHoverBackground=self.utilityButtonAccentColor,
             onClick="",
             column=0,
             row=0
         )
-        self.positiveNegativeButton = KButton(
+        self.backspaceButton = KButton(
             self.firstFrame,
-            text="+/-",
+            text="⌫",
             height=self.buttonHeight,
             width=self.buttonWidth,
-            background=self.normalButtonColor,
-            onHoverBackground=self.normalButtonAccentColor,
+            background=self.utilityButtonColor,
+            onHoverBackground=self.utilityButtonAccentColor,
             onClick="",
             column=1,
             row=0
@@ -95,15 +100,15 @@ class CalculatorGUI():
             text="%",
             height=self.buttonHeight,
             width=self.buttonWidth,
-            background=self.normalButtonColor,
-            onHoverBackground=self.normalButtonAccentColor,
+            background=self.utilityButtonColor,
+            onHoverBackground=self.utilityButtonAccentColor,
             onClick="",
             column=2,
             row=0
         )
         self.divisionButton = KButton(
             self.firstFrame,
-            text="/",
+            text="÷",
             height=self.buttonHeight,
             width=self.buttonWidth,
             background=self.operationButtonColor,
@@ -157,7 +162,7 @@ class CalculatorGUI():
         )
         self.multiplicationButton = KButton(
             self.secondFrame,
-            text="*",
+            text="×",
             height=self.buttonHeight,
             width=self.buttonWidth,
             background=self.operationButtonColor,
@@ -290,13 +295,23 @@ class CalculatorGUI():
             self.fifthFrame,
             text="0",
             height=self.buttonHeight,
-            width=self.root.winfo_width() * 0.50,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=0,
             row=0,
-            columnspan=2
+        )
+        self.positiveNegativeButton = KButton(
+            self.fifthFrame,
+            text="+/-",
+            height=self.buttonHeight,
+            width=self.buttonWidth,
+            background=self.normalButtonColor,
+            onHoverBackground=self.normalButtonAccentColor,
+            onClick="",
+            column=1,
+            row=0
         )
         self.decimalButton = KButton(
             self.fifthFrame,
@@ -326,4 +341,4 @@ class CalculatorGUI():
 
 
 if __name__ == '__main__':
-    CalculatorGUI()
+    CalculatorGUI(CalculatorService())
