@@ -6,7 +6,7 @@ from engine import DrawingEngine
 class KButton(ttk.Frame):
 
     def __init__(self, parent, text, background, onHoverBackground, onClick, column, row, columnspan=1, rowspan=1, *args, **kwargs):
-        super().__init__(padding=0,*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.parent = parent
         self.text = text
         self.background = background
@@ -19,7 +19,7 @@ class KButton(ttk.Frame):
 
         self.draw()
         self.configureButtonInteractivity()
-        self.grid(column=self.column, row=self.row)
+        self.grid(column=self.column, row=self.row, columnspan=self.columnspan, rowspan=self.rowspan)
 
     def __onHover(self, event):
         self.canvas.itemconfig("Frame", fill=self.onHoverBackground)
@@ -36,9 +36,8 @@ class KButton(ttk.Frame):
             self.parent,
             height=self['height'],
             width=self['width'],
-            bd=-3,
+            bd=-2,
             cursor="hand2",
-            relief=tkinter.FLAT
         )
         DrawingEngine().drawRectangle(
             canvas=self.canvas,
@@ -50,16 +49,6 @@ class KButton(ttk.Frame):
             tags=("Frame"),
             fill=self.background
         )
-        """
-        DrawingEngine().drawRoundedRectangle(
-            canvas=self.canvas,
-            x=0,
-            y=0,
-            w=self['width'],
-            h=self['height'],
-            c=10,
-        )
-        """
 
         self.canvas.create_text(self['width'] * 0.5, self['height'] * 0.5, text=self.text, fill='black')
         self.canvas.grid(column=self.column, row=self.row, columnspan=self.columnspan, rowspan=self.rowspan)

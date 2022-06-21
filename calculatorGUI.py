@@ -74,7 +74,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=0,
-            row=2
+            row=0
         )
         self.positiveNegativeButton = KButton(
             self.firstFrame,
@@ -85,7 +85,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=1,
-            row=2
+            row=0
         )
         self.percentageButton = KButton(
             self.firstFrame,
@@ -96,7 +96,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=2,
-            row=2
+            row=0
         )
         self.divisionButton = KButton(
             self.firstFrame,
@@ -107,11 +107,10 @@ class CalculatorGUI():
             onHoverBackground=self.operationButtonAccentColor,
             onClick="",
             column=3,
-            row=2
+            row=0
         )
 
         self.firstFrame.grid(column=0, row=1)
-
 
     def setupSecondRowButtons(self):
         self.secondFrame = tkinter.ttk.Frame(
@@ -129,7 +128,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=0,
-            row=3
+            row=0
         )
         self.eightButton = KButton(
             self.secondFrame,
@@ -140,7 +139,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=1,
-            row=3
+            row=0
         )
         self.nineButton = KButton(
             self.secondFrame,
@@ -151,7 +150,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=2,
-            row=3
+            row=0
         )
         self.multiplicationButton = KButton(
             self.secondFrame,
@@ -162,7 +161,7 @@ class CalculatorGUI():
             onHoverBackground=self.operationButtonAccentColor,
             onClick="",
             column=3,
-            row=3
+            row=0
         )
 
         self.secondFrame.grid(column=0, row=2)
@@ -184,7 +183,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=0,
-            row=4
+            row=0
         )
         self.fiveButton = KButton(
             self.thirdFrame,
@@ -195,7 +194,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=1,
-            row=4
+            row=0
         )
         self.sixButton = KButton(
             self.thirdFrame,
@@ -206,7 +205,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=2,
-            row=4
+            row=0
         )
         self.subtractionButton = KButton(
             self.thirdFrame,
@@ -217,7 +216,7 @@ class CalculatorGUI():
             onHoverBackground=self.operationButtonAccentColor,
             onClick="",
             column=3,
-            row=4
+            row=0
         )
 
         self.thirdFrame.grid(column=0, row=3)
@@ -238,7 +237,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=0,
-            row=5
+            row=0
         )
         self.twoButton = KButton(
             self.fourthFrame,
@@ -249,7 +248,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=1,
-            row=5
+            row=0
         )
         self.threeButton= KButton(
             self.fourthFrame,
@@ -260,7 +259,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=2,
-            row=5
+            row=0
         )
         self.additionButton = KButton(
             self.fourthFrame,
@@ -271,7 +270,7 @@ class CalculatorGUI():
             onHoverBackground=self.operationButtonAccentColor,
             onClick="",
             column=3,
-            row=5
+            row=0
         )
 
         self.fourthFrame.grid(column=0, row=4)
@@ -293,7 +292,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=0,
-            row=6,
+            row=0,
             columnspan=2
         )
         self.decimalButton = KButton(
@@ -305,7 +304,7 @@ class CalculatorGUI():
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
             column=2,
-            row=6
+            row=0
         )
         self.equalButton = KButton(
             self.fifthFrame,
@@ -316,7 +315,7 @@ class CalculatorGUI():
             onHoverBackground=self.equalButtonAccentColor,
             onClick="",
             column=3,
-            row=6
+            row=0
         )
 
         self.fifthFrame.grid(column=0, row=5)
