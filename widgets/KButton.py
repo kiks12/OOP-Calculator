@@ -6,7 +6,7 @@ from engine import DrawingEngine
 class KButton(ttk.Frame):
 
     def __init__(self, parent, text, background, onHoverBackground, onClick, column, row, columnspan=1, rowspan=1, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__(parent, *args, **kwargs)
         self.parent = parent
         self.text = text
         self.background = background
@@ -33,10 +33,10 @@ class KButton(ttk.Frame):
 
     def draw(self):
         self.canvas = tkinter.Canvas(
-            self.parent,
+            self,
             height=self['height'],
             width=self['width'],
-            bd=-2,
+            bd=-3,
             cursor="hand2",
         )
         DrawingEngine().drawRectangle(

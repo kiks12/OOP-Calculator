@@ -15,6 +15,9 @@ class CalculatorGUI():
         self.setupWindow()
         self.root.update()
 
+        self.buttonHeight = self.root.winfo_height() * 0.166666666
+        self.buttonWidth = self.root.winfo_width() * 0.25
+
         self.calculatorText = tkinter.StringVar()
         self.calculatorText.set('0')
         self.setupEntry()
@@ -35,16 +38,16 @@ class CalculatorGUI():
         self.root.config(bg=self.normalButtonAccentColor)
 
     def setupEntry(self):
-        self.entryFrame = tkinter.ttk.Frame(
+        self.inputFrame = tkinter.ttk.Frame(
             self.root,
-            height=self.root.winfo_height() * 0.169,
+            height=self.buttonHeight,
             width=self.root.winfo_width(),
         )
+
         self.calculatorInput = tkinter.Entry(
-            self.entryFrame,
+            self.inputFrame,
             textvariable=self.calculatorText,
             justify=tkinter.RIGHT,
-            bd=-2,
             state=tkinter.DISABLED,
             font=("Arial", 40),
             relief=tkinter.FLAT,
@@ -53,10 +56,10 @@ class CalculatorGUI():
             borderwidth=0,
         )
         self.calculatorInput.place(
-            height=self.entryFrame['height'],
-            width=self.entryFrame['width']
+            height=self.buttonHeight,
+            width=self.root.winfo_width()
         )
-        self.entryFrame.grid(column=0, row=0)
+        self.inputFrame.grid(column=0, row=0)
 
     def setupFirstRowButtons(self):
         self.firstFrame = tkinter.ttk.Frame(
@@ -68,8 +71,8 @@ class CalculatorGUI():
         self.clearButton = KButton(
             self.firstFrame,
             text="AC",
-            height=self.firstFrame['height'],
-            width=self.firstFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -79,8 +82,8 @@ class CalculatorGUI():
         self.positiveNegativeButton = KButton(
             self.firstFrame,
             text="+/-",
-            height=self.firstFrame['height'],
-            width=self.firstFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -90,8 +93,8 @@ class CalculatorGUI():
         self.percentageButton = KButton(
             self.firstFrame,
             text="%",
-            height=self.firstFrame['height'],
-            width=self.firstFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -101,8 +104,8 @@ class CalculatorGUI():
         self.divisionButton = KButton(
             self.firstFrame,
             text="/",
-            height=self.firstFrame['height'],
-            width=self.firstFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.operationButtonColor,
             onHoverBackground=self.operationButtonAccentColor,
             onClick="",
@@ -115,15 +118,15 @@ class CalculatorGUI():
     def setupSecondRowButtons(self):
         self.secondFrame = tkinter.ttk.Frame(
             self.root,
-            height=self.root.winfo_height() * 0.169,
+            height=self.buttonHeight,
             width=self.root.winfo_width(),
         )
 
         self.sevenButton = KButton(
             self.secondFrame,
             text="7",
-            height=self.secondFrame['height'],
-            width=self.secondFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -133,8 +136,8 @@ class CalculatorGUI():
         self.eightButton = KButton(
             self.secondFrame,
             text="8",
-            height=self.secondFrame['height'],
-            width=self.secondFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -144,8 +147,8 @@ class CalculatorGUI():
         self.nineButton = KButton(
             self.secondFrame,
             text="9",
-            height=self.secondFrame['height'],
-            width=self.secondFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -155,8 +158,8 @@ class CalculatorGUI():
         self.multiplicationButton = KButton(
             self.secondFrame,
             text="*",
-            height=self.secondFrame['height'],
-            width=self.secondFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.operationButtonColor,
             onHoverBackground=self.operationButtonAccentColor,
             onClick="",
@@ -170,15 +173,15 @@ class CalculatorGUI():
     def setupThirdRowButtons(self):
         self.thirdFrame = tkinter.ttk.Frame(
             self.root,
-            height=self.root.winfo_height() * 0.169,
+            height=self.buttonHeight,
             width=self.root.winfo_width(),
         )
 
         self.fourButton = KButton(
             self.thirdFrame,
             text="4",
-            height=self.thirdFrame['height'],
-            width=self.thirdFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -188,8 +191,8 @@ class CalculatorGUI():
         self.fiveButton = KButton(
             self.thirdFrame,
             text="5",
-            height=self.thirdFrame['height'],
-            width=self.thirdFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -199,8 +202,8 @@ class CalculatorGUI():
         self.sixButton = KButton(
             self.thirdFrame,
             text="6",
-            height=self.thirdFrame['height'],
-            width=self.thirdFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -210,8 +213,8 @@ class CalculatorGUI():
         self.subtractionButton = KButton(
             self.thirdFrame,
             text="-",
-            height=self.thirdFrame['height'],
-            width=self.thirdFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.operationButtonColor,
             onHoverBackground=self.operationButtonAccentColor,
             onClick="",
@@ -224,15 +227,15 @@ class CalculatorGUI():
     def setupFourthRowButtons(self):
         self.fourthFrame = tkinter.ttk.Frame(
             self.root,
-            height=self.root.winfo_height() * 0.169,
+            height=self.buttonHeight,
             width=self.root.winfo_width(),
         )
 
         self.oneButton = KButton(
             self.fourthFrame,
             text="1",
-            height=self.fourthFrame['height'],
-            width=self.fourthFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -242,8 +245,8 @@ class CalculatorGUI():
         self.twoButton = KButton(
             self.fourthFrame,
             text="2",
-            height=self.fourthFrame['height'],
-            width=self.fourthFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -253,8 +256,8 @@ class CalculatorGUI():
         self.threeButton= KButton(
             self.fourthFrame,
             text="3",
-            height=self.fourthFrame['height'],
-            width=self.fourthFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -264,8 +267,8 @@ class CalculatorGUI():
         self.additionButton = KButton(
             self.fourthFrame,
             text="+",
-            height=self.fourthFrame['height'],
-            width=self.fourthFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.operationButtonColor,
             onHoverBackground=self.operationButtonAccentColor,
             onClick="",
@@ -279,15 +282,15 @@ class CalculatorGUI():
     def setupFifthRowButtons(self):
         self.fifthFrame = tkinter.ttk.Frame(
             self.root,
-            height=self.root.winfo_height() * 0.169,
+            height=self.buttonHeight,
             width=self.root.winfo_width(),
         )
 
         self.zeroButton = KButton(
             self.fifthFrame,
             text="0",
-            height=self.fifthFrame['height'],
-            width=self.fifthFrame['width'] * 0.50,
+            height=self.buttonHeight,
+            width=self.root.winfo_width() * 0.50,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -298,8 +301,8 @@ class CalculatorGUI():
         self.decimalButton = KButton(
             self.fifthFrame,
             text=".",
-            height=self.fifthFrame['height'],
-            width=self.fifthFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
             onClick="",
@@ -309,8 +312,8 @@ class CalculatorGUI():
         self.equalButton = KButton(
             self.fifthFrame,
             text="=",
-            height=self.fifthFrame['height'],
-            width=self.fifthFrame['width'] * 0.25,
+            height=self.buttonHeight,
+            width=self.buttonWidth,
             background=self.equalButtonColor,
             onHoverBackground=self.equalButtonAccentColor,
             onClick="",
