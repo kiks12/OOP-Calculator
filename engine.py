@@ -13,7 +13,7 @@ class DrawingEngine():
     def drawBorders(self, canvas, x, y, w, h, fill):
         canvas.create_line(x  , y,   x+w  , y    , fill=fill, width=2)
         canvas.create_line(x  , y+h, x+w  , y+h  , fill=fill)
-        canvas.create_line(x,   y  , x,     y+h  , fill=fill)
+        canvas.create_line(x,   y  , x,     y+h  , fill=fill, width=2)
         canvas.create_line(x+w, y  , x+w,   y+h  , fill=fill)
 
 
@@ -26,3 +26,27 @@ class DrawingEngine():
         canvas.create_line(x+c, y+h, x+w-c, y+h  )
         canvas.create_line(x,   y+c, x,     y+h-c)
         canvas.create_line(x+w, y+c, x+w,   y+h-c)
+
+    def drawRoundedRect(self, canvas, x1, y1, x2, y2, radius, **kwargs):
+        points = [x1+radius, y1,
+              x1+radius, y1,
+              x2-radius, y1,
+              x2-radius, y1,
+              x2, y1,
+              x2, y1+radius,
+              x2, y1+radius,
+              x2, y2-radius,
+              x2, y2-radius,
+              x2, y2,
+              x2-radius, y2,
+              x2-radius, y2,
+              x1+radius, y2,
+              x1+radius, y2,
+              x1, y2,
+              x1, y2-radius,
+              x1, y2-radius,
+              x1, y1+radius,
+              x1, y1+radius,
+              x1, y1]
+
+        canvas.create_polygon(points, **kwargs, smooth=True)

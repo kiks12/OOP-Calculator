@@ -60,6 +60,18 @@ class KButton(ttk.Frame):
             fill=self.background,
             tags=("Frame"),
         )
+        """
+        DrawingEngine().drawRoundedRect(
+            canvas=self.canvas,
+            x1=0,
+            x2=self['width'],
+            y1=0,
+            y2=self['height'],
+            radius=20,
+            fill=self.background,
+            tags=("Frame"),
+        )
+        """
         #self.canvas.itemconfig("Frame", fill=self.background)
 
         self.canvas.create_text(self['width'] * 0.5, self['height'] * 0.5, text=self.text, fill='black')
