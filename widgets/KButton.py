@@ -6,7 +6,7 @@ from engine import DrawingEngine
 
 class KButton(ttk.Frame):
 
-    def __init__(self, parent, text, background, onHoverBackground, onClick, column, row, columnspan=1, rowspan=1, *args, **kwargs):
+    def __init__(self, parent, text, background, onHoverBackground, column, row, onClick=None,columnspan=1, rowspan=1, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.parent = parent
         self.text = text
@@ -17,6 +17,7 @@ class KButton(ttk.Frame):
         self.row = row
         self.columnspan = columnspan
         self.rowspan = rowspan
+        self.cache = {}
 
         self.draw()
         self.configureButtonInteractivity()
@@ -28,9 +29,16 @@ class KButton(ttk.Frame):
     def __onLeave(self, event):
         self.canvas.itemconfig("Frame", fill=self.background)
 
+    def __onClick(self, event):
+        self.onClick()
+
     def configureButtonInteractivity(self):
         self.canvas.bind("<Enter>", lambda e: self.__onHover(e))
         self.canvas.bind("<Leave>", lambda e: self.__onLeave(e))
+        self.canvas.bind("<Button-1>", lambda e: self.__onClick(e))
+        self.cache["onHover"] = lambda e : self.__onHover(e)
+        self.cache["onLeave"] = lambda e : self.__onLeave(e)
+        self.cache["onClick"] = self.onClick
 
     def draw(self):
         #canvasBD = -2 if sys.platform == "win32" else -3 
@@ -56,3 +64,6 @@ class KButton(ttk.Frame):
 
         self.canvas.create_text(self['width'] * 0.5, self['height'] * 0.5, text=self.text, fill='black')
         self.canvas.grid(column=self.column, row=self.row, columnspan=self.columnspan, rowspan=self.rowspan)
+
+    def __str__(self):
+        return self.text

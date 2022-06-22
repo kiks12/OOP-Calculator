@@ -14,6 +14,7 @@ class CalculatorGUI():
         self.utilityButtonAccentColor = "#b9c9c5"
         self.operationButtonColor = "#00d498"
         self.operationButtonAccentColor = "#00c48d"
+        self.operationButtonClickedColor = "#03ab7c"
         self.equalButtonColor = "#02ad7d"
         self.equalButtonAccentColor = "#01946a"
 
@@ -25,6 +26,7 @@ class CalculatorGUI():
 
         self.calculatorText = tkinter.StringVar()
         self.calculatorText.set('0')
+        self.service.calculatorTextVariable = self.calculatorText
         self.setupEntry()
 
         self.setupFirstRowButtons()
@@ -80,7 +82,7 @@ class CalculatorGUI():
             width=self.buttonWidth,
             background=self.utilityButtonColor,
             onHoverBackground=self.utilityButtonAccentColor,
-            onClick="",
+            onClick=self.service.clear,
             column=0,
             row=0
         )
@@ -91,7 +93,7 @@ class CalculatorGUI():
             width=self.buttonWidth,
             background=self.utilityButtonColor,
             onHoverBackground=self.utilityButtonAccentColor,
-            onClick="",
+            onClick=self.service.backspace,
             column=1,
             row=0
         )
@@ -102,7 +104,7 @@ class CalculatorGUI():
             width=self.buttonWidth,
             background=self.utilityButtonColor,
             onHoverBackground=self.utilityButtonAccentColor,
-            onClick="",
+            onClick=self.service.percentage,
             column=2,
             row=0
         )
@@ -113,9 +115,13 @@ class CalculatorGUI():
             width=self.buttonWidth,
             background=self.operationButtonColor,
             onHoverBackground=self.operationButtonAccentColor,
-            onClick="",
             column=3,
             row=0
+        )
+        self.divisionButton.onClick = lambda : self.service.setOperator(
+            "DIVISION",
+            self.divisionButton,
+            self.operationButtonClickedColor,
         )
 
         self.firstFrame.grid(column=0, row=1)
@@ -167,9 +173,13 @@ class CalculatorGUI():
             width=self.buttonWidth,
             background=self.operationButtonColor,
             onHoverBackground=self.operationButtonAccentColor,
-            onClick="",
             column=3,
             row=0
+        )
+        self.multiplicationButton.onClick = lambda : self.service.setOperator(
+            "MULTIPLICATION",
+            self.multiplicationButton,
+            self.operationButtonClickedColor
         )
 
         self.secondFrame.grid(column=0, row=2)
@@ -222,9 +232,13 @@ class CalculatorGUI():
             width=self.buttonWidth,
             background=self.operationButtonColor,
             onHoverBackground=self.operationButtonAccentColor,
-            onClick="",
             column=3,
             row=0
+        )
+        self.subtractionButton.onClick = lambda : self.service.setOperator(
+            "SUBTRACTION",
+            self.subtractionButton,
+            self.operationButtonClickedColor
         )
 
         self.thirdFrame.grid(column=0, row=3)
@@ -276,9 +290,13 @@ class CalculatorGUI():
             width=self.buttonWidth,
             background=self.operationButtonColor,
             onHoverBackground=self.operationButtonAccentColor,
-            onClick="",
             column=3,
             row=0
+        )
+        self.additionButton.onClick = lambda : self.service.setOperator(
+            "ADDITION",
+            self.additionButton,
+            self.operationButtonClickedColor
         )
 
         self.fourthFrame.grid(column=0, row=4)
@@ -309,7 +327,7 @@ class CalculatorGUI():
             width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
-            onClick="",
+            onClick=self.service.positiveNegative,
             column=1,
             row=0
         )
@@ -320,7 +338,7 @@ class CalculatorGUI():
             width=self.buttonWidth,
             background=self.normalButtonColor,
             onHoverBackground=self.normalButtonAccentColor,
-            onClick="",
+            onClick=self.service.decimal,
             column=2,
             row=0
         )
@@ -331,7 +349,7 @@ class CalculatorGUI():
             width=self.buttonWidth,
             background=self.equalButtonColor,
             onHoverBackground=self.equalButtonAccentColor,
-            onClick="",
+            onClick=self.service.evaluate,
             column=3,
             row=0
         )
