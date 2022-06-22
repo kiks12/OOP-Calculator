@@ -1,4 +1,5 @@
 
+import sys
 import tkinter
 from tkinter import ttk
 from engine import DrawingEngine
@@ -32,11 +33,13 @@ class KButton(ttk.Frame):
         self.canvas.bind("<Leave>", lambda e: self.__onLeave(e))
 
     def draw(self):
+        #canvasBD = -2 if sys.platform == "win32" else -3 
         self.canvas = tkinter.Canvas(
             self,
             height=self['height'],
             width=self['width'],
-            bd=-3,
+            bd=0,
+            highlightthickness=0,
             cursor="hand2",
         )
         DrawingEngine().drawRectangle(
@@ -46,9 +49,10 @@ class KButton(ttk.Frame):
             y1=0,
             y2=self['height'],
             borderFill=self.onHoverBackground,
+            fill=self.background,
             tags=("Frame"),
-            fill=self.background
         )
+        #self.canvas.itemconfig("Frame", fill=self.background)
 
         self.canvas.create_text(self['width'] * 0.5, self['height'] * 0.5, text=self.text, fill='black')
         self.canvas.grid(column=self.column, row=self.row, columnspan=self.columnspan, rowspan=self.rowspan)
